@@ -139,38 +139,46 @@ const PostPage: NextPage<Props> = ({
 
   const MDXContent = useMDXComponent(code);
 
+  // return (
+  //   <LayoutPerPage>
+  //     <NextSeo
+  //       title={title}
+  //       description={description}
+  //       canonical={url}
+  //       openGraph={{
+  //         title: title,
+  //         description: description,
+  //         url: url,
+  //         images: [
+  //           {
+  //             url: ogImage,
+  //           },
+  //         ],
+  //         type: 'article',
+  //         article: {
+  //           publishedTime: date,
+  //           modifiedTime: date,
+  //         },
+  //       }}
+  //     />
+
+  //     <ArticleJsonLd
+  //       url={url}
+  //       title={title}
+  //       images={[ogImage]}
+  //       datePublished={date}
+  //       dateModified={date}
+  //       authorName={siteConfigs.author}
+  //       description={description}
+  //     />
+
+  //     <PostLayout post={post} prevPost={prevPost} nextPost={nextPost}>
+  //       <MDXContent components={mdxComponents} />
+  //     </PostLayout>
+  //   </LayoutPerPage>
+  // );
   return (
     <LayoutPerPage>
-      <NextSeo
-        title={title}
-        description={description}
-        canonical={url}
-        openGraph={{
-          title: title,
-          description: description,
-          url: url,
-          images: [
-            {
-              url: ogImage,
-            },
-          ],
-          type: 'article',
-          article: {
-            publishedTime: date,
-            modifiedTime: date,
-          },
-        }}
-      />
-
-      <ArticleJsonLd
-        url={url}
-        title={title}
-        images={[ogImage]}
-        datePublished={date}
-        dateModified={date}
-        authorName={siteConfigs.author}
-        description={description}
-      />
 
       <PostLayout post={post} prevPost={prevPost} nextPost={nextPost}>
         <MDXContent components={mdxComponents} />

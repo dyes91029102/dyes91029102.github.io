@@ -1,8 +1,10 @@
 {
   "copied": "Copied!",
   "table-of-contents": "Table of contents",
-  "home": "Home",
-  "posts": "Posts",
+  "home": "Home",  
+  "portfolio": "portfolio",
+  "about": "about",
+  "posts": "Posts",  
   "search": "Search",
   "search-posts": "Search Posts",
   "next-article": "Next Article",

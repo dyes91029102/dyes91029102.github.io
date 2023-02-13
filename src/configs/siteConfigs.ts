@@ -1,20 +1,20 @@
-const fqdn = 'https://nextjs-tailwind-contentlayer-blog-starter.vercel.app';
-const logoPath = '/logo.png';
+const fqdn = 'https://dyes91029102-github-io.vercel.app';
+const logoPath = '/photo.jpg';
 const bannerPath = '/og-image.png';
 
 export const siteConfigs = {
-  title: 'Next.js Tailwind Contentlayer Blog Starter',
-  titleShort: 'Next Blog',
+  title: 'Brook Blog',
+  titleShort: 'Brook Blog',
   description:
-    'Blog starter template with modern frontend technologies like Next.js, Tailwind CSS, Contentlayer, i18Next',
-  author: 'Tony Stark',
-  credit: 'Stark Industries',
-  email: 'stark@example.com',
+    '我是一位前端軟體工程師，喜歡協作開發網站及新奇知識所帶來的樂趣。\r\n逐步紀錄自己學習及調研的相關資訊，過程中如有錯誤觀念，請多多指教。',
+  author: 'Brook Chen',
+  credit: 'Brook',
+  email: 'dyes9102@gmail.com',
   fqdn: fqdn,
   logoPath: logoPath,
   logoUrl: fqdn + logoPath,
   bannerPath: bannerPath,
   bannerUrl: fqdn + bannerPath,
-  twitterID: '@EasonChang_me',
-  datePublished: '2022-09-01',
+  twitterID: '',
+  datePublished: '2023-02-13',
 };
