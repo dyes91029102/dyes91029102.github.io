@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import { GetStaticProps } from 'next';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+// import { useTranslation } from 'next-i18next';
+// import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { ArticleJsonLd } from 'next-seo';
 
 import {
@@ -38,7 +38,7 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
 
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['indexPage', 'common'])),
+      // ...(await serverSideTranslations(locale, ['indexPage', 'common'])),
       posts,
       commandPalettePosts,
     },
@@ -46,7 +46,7 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
 };
 
 const Home: NextPage<Props> = ({ posts, commandPalettePosts }) => {
-  const { t } = useTranslation(['indexPage', 'common']);
+  // const { t } = useTranslation(['indexPage', 'common']);
 
   useCommandPalettePostActions(commandPalettePosts);
 

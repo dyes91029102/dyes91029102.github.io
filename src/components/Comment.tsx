@@ -1,12 +1,12 @@
 import Giscus from '@giscus/react';
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
 import { useTheme } from 'next-themes';
 
 import { giscusConfigs } from '@/configs/giscusConfigs';
 
 const Comment = () => {
   const { theme } = useTheme();
-  const { locale } = useRouter();
+  // const { locale } = useRouter();
 
   return (
     <div id="comment" className="mx-auto max-w-prose py-6">
@@ -20,7 +20,7 @@ const Comment = () => {
         emitMetadata="0"
         inputPosition="top"
         theme={theme === 'dark' ? 'transparent_dark' : 'light'}
-        lang={locale}
+        // lang={locale}
         loading="lazy"
       />
     </div>

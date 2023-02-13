@@ -2,7 +2,7 @@ import { withContentlayer } from 'next-contentlayer';
 
 import i18nConfig from './next-i18next.config.js';
 
-const { i18n } = i18nConfig;
+// const { i18n } = i18nConfig;
 
 /** @type {import('next').NextConfig} */
 const nextConfig = withContentlayer({
@@ -28,10 +28,12 @@ const nextConfig = withContentlayer({
     ignoreBuildErrors: true,
   },
   images: {
+    // 圖片先不優化api(靜態打包會失敗)
+    unoptimized: true,
     // Enable modern image formats
     formats: ['image/avif', 'image/webp'],
   },
-  i18n,
+  // i18n,
 });
 
 export default nextConfig;

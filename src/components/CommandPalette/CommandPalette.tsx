@@ -21,7 +21,7 @@ import {
   useMatches,
 } from 'kbar';
 import { useRouter } from 'next/router';
-import { useTranslation } from 'next-i18next';
+// import { useTranslation } from 'next-i18next';
 import { useTheme } from 'next-themes';
 import React, { forwardRef, useMemo } from 'react';
 
@@ -32,7 +32,7 @@ type Props = {
 };
 
 export default function CommandPalette({ children }: Props) {
-  const { t } = useTranslation(['common']);
+  // const { t } = useTranslation(['common']);
   const router = useRouter();
   const { setTheme } = useTheme();
 

@@ -2,7 +2,7 @@
 
 import clsx from 'clsx';
 import GithubSlugger from 'github-slugger';
-import { useTranslation } from 'next-i18next';
+// import { useTranslation } from 'next-i18next';
 import { useEffect, useRef, useState } from 'react';
 
 // eslint-disable-next-line no-unused-vars
@@ -61,7 +61,7 @@ type Props = {
 };
 
 const TableOfContents = ({ source }: Props) => {
-  const { t } = useTranslation(['common']);
+  // const { t } = useTranslation(['common']);
 
   const headingLines = source
     .split('\n')

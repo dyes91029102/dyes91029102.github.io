@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useTranslation } from 'next-i18next';
+// import { useTranslation } from 'next-i18next';
 
 import Comment from '@/components/Comment';
 import CustomLink from '@/components/CustomLink';
@@ -39,7 +39,7 @@ export default function PostLayout({
   } = post;
 
   const { locale } = useRouter();
-  const { t } = useTranslation(['common']);
+  // const { t } = useTranslation(['common']);
 
   return (
     <article>

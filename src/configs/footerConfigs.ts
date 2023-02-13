@@ -1,11 +1,11 @@
 export const footerConfigs = {
-  credit: 'Stark Industries',
+  credit: 'Brook Cehn',
   socialLinks: {
-    email: 'stark@example.com',
+    email: 'dyes9102@gmail.com',
     github:
-      'https://github.com/Kamigami55/nextjs-tailwind-contentlayer-blog-starter',
-    twitter: 'https://twitter.com/EasonChang_me',
-    facebook: 'https://www.facebook.com/eason.blog',
-    linkedin: 'https://www.linkedin.com/in/easonchang101',
+      'https://github.com/dyes91029102/dyes91029102.github.io',
+    twitter: '',
+    facebook: '',
+    linkedin: ''
   },
 };
