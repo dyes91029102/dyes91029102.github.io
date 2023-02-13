@@ -20,7 +20,7 @@ export const useCommandPaletteLocaleActions = () => {
         perform: () => changeLocale('en'),
         icon: <span className="p-1">🇺🇸</span>,
         parent: 'language',
-        section: t('operation'),
+        section: 'operation',
       },
       {
         id: 'language-chinese',
@@ -30,7 +30,7 @@ export const useCommandPaletteLocaleActions = () => {
         perform: () => changeLocale('zh-TW'),
         icon: <span className="p-1">🇹🇼</span>,
         parent: 'language',
-        section: t('operation'),
+        section: 'operation',
       },
     ],
     [asPath]

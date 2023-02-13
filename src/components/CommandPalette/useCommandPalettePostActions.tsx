@@ -15,7 +15,7 @@ export const useCommandPalettePostActions = (
       id: post.slug,
       name: post.title,
       perform: () => router.push(post.path),
-      section: t('search-posts'),
+      section: 'search-posts',
       parent: 'search-posts',
     })),
     []
