@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>Next.js Tailwind Contentlayer Blog Starter</title>
+        <link>https://nextjs-tailwind-contentlayer-blog-starter.vercel.app</link>
+        <description>Blog starter template with modern frontend technologies like Next.js, Tailwind CSS, Contentlayer, i18Next</description>
+        <lastBuildDate>Mon, 13 Feb 2023 13:40:43 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <image>
+            <title>Next.js Tailwind Contentlayer Blog Starter</title>
+            <url>https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/logo.png</url>
+            <link>https://nextjs-tailwind-contentlayer-blog-starter.vercel.app</link>
+        </image>
+        <copyright>Copyright © 2023 - 2023 Stark Industries</copyright>
+        <item>
+            <title><![CDATA[All feature demo]]></title>
+            <link>https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/posts/all-feature-demo</link>
+            <guid>https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/posts/all-feature-demo</guid>
+            <pubDate>Mon, 05 Sep 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[展示所有功能]]></description>
+            <author>stark@example.com (Brook Chen)</author>
+            <enclosure url="https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/images/anita-chong-unsplash.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Custom Link demo]]></title>
+            <link>https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/posts/custom-link-demo</link>
+            <guid>https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/posts/custom-link-demo</guid>
+            <pubDate>Sun, 04 Sep 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[Custom Link demo]]></description>
+            <author>stark@example.com (Brook Chen)</author>
+            <enclosure url="https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/og-image.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[More content demo]]></title>
+            <link>https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/posts/more-content-demo</link>
+            <guid>https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/posts/more-content-demo</guid>
+            <pubDate>Sat, 03 Sep 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[Many content inside]]></description>
+            <author>stark@example.com (Brook Chen)</author>
+            <enclosure url="https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/og-image.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[Post with images]]></title>
+            <link>https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/posts/post-with-images</link>
+            <guid>https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/posts/post-with-images</guid>
+            <pubDate>Fri, 02 Sep 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[My post with images]]></description>
+            <author>stark@example.com (Brook Chen)</author>
+            <enclosure url="https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/images/anita-chong-unsplash.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Post with code]]></title>
+            <link>https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/posts/post-with-code</link>
+            <guid>https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/posts/post-with-code</guid>
+            <pubDate>Thu, 01 Sep 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[My post with code]]></description>
+            <author>stark@example.com (Brook Chen)</author>
+            <enclosure url="https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/og-image.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[Markdown demo]]></title>
+            <link>https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/posts/markdown-demo</link>
+            <guid>https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/posts/markdown-demo</guid>
+            <pubDate>Wed, 31 Aug 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[This is a demo of Markdown]]></description>
+            <author>stark@example.com (Brook Chen)</author>
+            <enclosure url="https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/og-image.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[Sample post]]></title>
+            <link>https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/posts/sample-post</link>
+            <guid>https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/posts/sample-post</guid>
+            <pubDate>Tue, 30 Aug 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[My first post]]></description>
+            <author>stark@example.com (Brook Chen)</author>
+            <enclosure url="https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/og-image.png" length="0" type="image/png"/>
+        </item>
+    </channel>
+</rss>

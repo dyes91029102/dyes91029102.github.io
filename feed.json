@@ -1,0 +1,98 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "Next.js Tailwind Contentlayer Blog Starter",
+    "home_page_url": "https://nextjs-tailwind-contentlayer-blog-starter.vercel.app",
+    "feed_url": "https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/feed.json",
+    "description": "Blog starter template with modern frontend technologies like Next.js, Tailwind CSS, Contentlayer, i18Next",
+    "icon": "https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/logo.png",
+    "author": {
+        "name": "Brook Chen",
+        "url": "https://nextjs-tailwind-contentlayer-blog-starter.vercel.app"
+    },
+    "items": [
+        {
+            "id": "https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/posts/all-feature-demo",
+            "url": "https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/posts/all-feature-demo",
+            "title": "All feature demo",
+            "summary": "展示所有功能",
+            "image": "https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/images/anita-chong-unsplash.jpg",
+            "date_modified": "2022-09-05T00:00:00.000Z",
+            "author": {
+                "name": "Brook Chen",
+                "url": "https://nextjs-tailwind-contentlayer-blog-starter.vercel.app"
+            }
+        },
+        {
+            "id": "https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/posts/custom-link-demo",
+            "url": "https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/posts/custom-link-demo",
+            "title": "Custom Link demo",
+            "summary": "Custom Link demo",
+            "image": "https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/og-image.png",
+            "date_modified": "2022-09-04T00:00:00.000Z",
+            "author": {
+                "name": "Brook Chen",
+                "url": "https://nextjs-tailwind-contentlayer-blog-starter.vercel.app"
+            }
+        },
+        {
+            "id": "https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/posts/more-content-demo",
+            "url": "https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/posts/more-content-demo",
+            "title": "More content demo",
+            "summary": "Many content inside",
+            "image": "https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/og-image.png",
+            "date_modified": "2022-09-03T00:00:00.000Z",
+            "author": {
+                "name": "Brook Chen",
+                "url": "https://nextjs-tailwind-contentlayer-blog-starter.vercel.app"
+            }
+        },
+        {
+            "id": "https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/posts/post-with-images",
+            "url": "https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/posts/post-with-images",
+            "title": "Post with images",
+            "summary": "My post with images",
+            "image": "https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/images/anita-chong-unsplash.jpg",
+            "date_modified": "2022-09-02T00:00:00.000Z",
+            "author": {
+                "name": "Brook Chen",
+                "url": "https://nextjs-tailwind-contentlayer-blog-starter.vercel.app"
+            }
+        },
+        {
+            "id": "https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/posts/post-with-code",
+            "url": "https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/posts/post-with-code",
+            "title": "Post with code",
+            "summary": "My post with code",
+            "image": "https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/og-image.png",
+            "date_modified": "2022-09-01T00:00:00.000Z",
+            "author": {
+                "name": "Brook Chen",
+                "url": "https://nextjs-tailwind-contentlayer-blog-starter.vercel.app"
+            }
+        },
+        {
+            "id": "https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/posts/markdown-demo",
+            "url": "https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/posts/markdown-demo",
+            "title": "Markdown demo",
+            "summary": "This is a demo of Markdown",
+            "image": "https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/og-image.png",
+            "date_modified": "2022-08-31T00:00:00.000Z",
+            "author": {
+                "name": "Brook Chen",
+                "url": "https://nextjs-tailwind-contentlayer-blog-starter.vercel.app"
+            }
+        },
+        {
+            "id": "https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/posts/sample-post",
+            "url": "https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/posts/sample-post",
+            "title": "Sample post",
+            "summary": "My first post",
+            "image": "https://nextjs-tailwind-contentlayer-blog-starter.vercel.app/og-image.png",
+            "date_modified": "2022-08-30T00:00:00.000Z",
+            "author": {
+                "name": "Brook Chen",
+                "url": "https://nextjs-tailwind-contentlayer-blog-starter.vercel.app"
+            }
+        }
+    ]
+}
