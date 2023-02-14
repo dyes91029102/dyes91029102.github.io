@@ -3,6 +3,8 @@ import SocialIcon from '@/components/SocialIcon';
 import { footerConfigs } from '@/configs/footerConfigs';
 
 export default function Footer() {
+  // <SocialIcon kind="twitter" href={footerConfigs.socialLinks.twitter} />
+
   return (
     <footer>
       <div className="mt-16 flex flex-col items-center">
@@ -20,7 +22,6 @@ export default function Footer() {
             kind="linkedin"
             href={footerConfigs.socialLinks.linkedin}
           />
-          <SocialIcon kind="twitter" href={footerConfigs.socialLinks.twitter} />
         </div>
         <div className="mb-8 flex space-x-2 text-sm text-gray-500 transition-colors dark:text-gray-400">
           <div>{`Copyright © 2023 - ${new Date().getFullYear()}`}</div>

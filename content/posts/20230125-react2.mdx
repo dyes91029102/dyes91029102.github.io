@@ -1,0 +1,122 @@
+---
+title: React JSX及Component簡介
+description: 在開始學習React之前，要先了解JSX是什麼，他是組建component需要使用到的語法。
+slug: react2
+date: 2023-01-25
+type: Post
+redirectFrom:
+  - /old-all-feature-demo/
+---
+
+## JSX介紹
+
+### JSX是什麼?
+
+1. 大部分 React 的開發者會使用一種特殊的語法，被稱為`JSX`，因為它讓這些結構寫起來更容易。
+
+2. [JSX](https://ithelp.ithome.com.tw/articles/10277126) 就跟 JavaScript 一樣強大。可以在 JSX 中的括號中放入任何JavaScript的表達式。每個React element都是一個 JavaScript 的 object，你可以把它存在一個變數中或在程式中互相傳遞。
+
+3. JSX的X代表的是`XML`語法的意思，它讀到JSX語法時，語法實際上是用`React.createElement`方法來建立虛擬的DOM元素
+
+4. JSX當中看到像HTML語法的內容，並不是真正網路上的Tag，而是封裝過的語法供開發者方便開發。但部分語法因與JavaScript語法衝突，
+例如:HTML中的屬性`class`與`for`，在JSX語法要改用`className`與`htmlFor`來取代
+
+### JSX語法與React Element(元素)
+React Element(元素)是一個React用於描述虛擬DOM元素的物件，它只有單純用於描述的屬性值，其中沒有帶有方法。
+![sample2.jpg](/images/sample2.jpg)
+
+
+1. type： 一個字串，代表任何合法的HTML元素類型名稱，例如h1、div，或是參照到React程式碼中定義的的元件類別
+2. props：對應到元素的屬性值的屬性
+3. key： React用來識別元素的屬性，尤其是在同樣類型的元素間要用這個屬性來區分
+4. [ref](https://blog.errorbaker.tw/posts/lavi/react-ref-reference/)： React用來存取對應的實體(真實)DOM用的屬性
+5. **JSX語法是`React.createElement的簡寫語法`**，可透過線上[babel](https://babeljs.io/repl/#?browsers=defaults%2C%20not%20ie%2011%2C%20not%20ie_mob%2011&build=&builtIns=false&corejs=3.21&spec=false&loose=false&code_lz=DwEwlgbgBAxgNgQwM5IHIILYFMC8AiJACwHsAHUsAOwHMBaOMJAFzwD4AoKKYQgRlYDKJclWpQAMoyZQAZsQBOUAN6l5ZJADpKmLAF9gAej4cuwAK5wTXbg1YBJSswTV5mQ7c7XgtgOqEETEgAguTuYFamtgDyMBZmSGFWhhYchuAQrADc7EA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=react&prettier=false&targets=&version=7.20.11&externalPlugins=&assumptions=%7B%7D)編譯器進行查看
+
+```js
+// 簡寫寫法
+<div className="shopping-list">
+  <h1>Shopping List for {props.name}</h1>
+  <ul>
+    <li>Instagram</li>
+    <li>WhatsApp</li>
+    <li>Oculus</li>
+  </ul>
+</div>
+// 原始編譯寫法
+React.createElement("div", {
+  className: "shopping-list"
+},
+React.createElement("h1", null, "Shopping List for ", props.name),
+React.createElement("ul", null,
+    React.createElement("li", null, "Instagram"),
+    React.createElement("li", null, "WhatsApp"),
+    React.createElement("li", null, "Oculus")
+  )
+);
+```
+
+### React Component(元件)語法
+React Component(元件)則是裡面可以封裝多個React Element(元素)或封裝其他元件，也可以帶有`狀態(state)`，以及各種`事件處理的方法`，主要有分為以下三種方式。
+- ES6+的類別定義方式(建構式樣式)
+```js
+class HelloWorld extends Component {
+    render() {
+        return <h1>{this.props.text}</h1>
+    }
+}
+```
+- ES5的語法(工廠樣式)
+只支援ES5的瀏覽器，最早React的版本中只有這種語法。
+```js
+var HelloWorld = React.createClass({
+  render: function() {
+    return <h1>{this.props.text}</h1>
+  }
+});
+```
+- 函式定義樣式
+語法是在React 0.14版本加入，該組件寫法一開始屬於`無狀態`的一種元件，只適合拿來做基礎共用的元件，無法做複雜的操作。
+在React 16.8 中增加的新功能，讓你不必寫 class 就能使用 state 以及其他 React 的功能，也是目前官方最為推薦的寫法，其優點打包過後的檔案輕量許多。
+```js
+ const HelloWorld = (props) => (
+   <h1>{props.text}</h1>
+ )
+```
+
+特別注意以下兩點：
+> 每個function 只能回傳一個值，最外層必須由div或是React.Component 標籤包起來
+> 每個方法名稱開頭一定要`大寫`，否則會被瀏覽器誤以為是JSX原始標籤
+
+
+### JS、TS、JSX、TSX比較
+首先，JS與TS最大差異，在於它們的型別差距。
+JavaScript是程式執行時期(runtime)才會得知型別的`動態型別(dynamic typing)語言`，
+TypeScript則是`靜態型別(static typing)語言`，意即它可以在編譯時期(compile time) 檢查程式碼。
+```js:js
+const Foo = () => {
+    return React.createElement("div", null, "Hello World!");
+};
+```
+```ts:ts
+const Foo: FunctionalComponent = () => {
+    return React.createElement("div", null, "Hello World!");
+};
+```
+啟用了JSX，它是 React 的語言擴展，允許您直接在代碼中編寫標記，然後將代碼編譯為純 JavaScript，
+JSX 替換為直接 API 調用React.createElement
+```jsx:jsx
+const Foo = () => {
+    return <div>Hello World!</div>;
+};
+```
+```tsx:tsx
+const Foo: FunctionalComponent = () => {
+    return <div>Hello World!</div>;
+};
+```
+
+
+## 參考
+1. [https://ithelp.ithome.com.tw/articles/10186053](https://ithelp.ithome.com.tw/articles/10186053)
+2. [https://stackoverflow.com/questions/64343698/what-is-the-difference-between-js-tsx-and-jsx-in-react](https://stackoverflow.com/questions/64343698/what-is-the-difference-between-js-tsx-and-jsx-in-react)
+3. [https://ithelp.ithome.com.tw/articles/10292075](https://ithelp.ithome.com.tw/articles/10292075)

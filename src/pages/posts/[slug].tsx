@@ -132,6 +132,8 @@ const PostPage: NextPage<Props> = ({
     socialImage,
     body: { code },
   } = post;
+
+  console.log(post)
   useCommandPalettePostActions(commandPalettePosts);
 
   const url = siteConfigs.fqdn + path;

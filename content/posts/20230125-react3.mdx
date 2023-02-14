@@ -1,0 +1,104 @@
+---
+title: React 主要概念
+description: 了解React的基礎語法、數據傳遞、值的綁定，對於js或其他前端框架就有概念的開發者，相對來說容易上手。
+slug: react3
+date: 2023-02-11
+type: Post
+redirectFrom:
+  - /old-all-feature-demo/
+---
+
+## 主要概念
+
+### Components 與 Props
+- 當 React 看到由使用者定義 component 的 element 時，它將 JSX 屬性和 children 作為 single object 傳遞給該 component。我們稱這個 object 為`props`。
+- Component的字首須為`大寫字母`。 React 會將小寫字母開頭的組件視為原始 DOM 標籤，舉例來說，`<div/>` 就會被視為是 HTML 的 div 標籤，但是 `<Welcome />` 則是一個 component，而且需要在作用域中使用 Welcome。
+- Props 是`唯讀的`
+```js
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.scss';
+
+function Welcome(props) {
+    return (
+      <h1>Hello,{props.name}</h1>
+    );
+  }
+// 進入點
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<Welcome name="brook" />);
+```
+
+
+### Component 與 State
+State 類似於 prop，但它是私有(Locale)且由 component 完全控制的，在component 才有此屬性。
+
+1. 唯一可初始指定在contructor , ex: this.state.xxx = 'xxx';
+2. `不能直接修改State`，而是採用setState()，否則不會render畫面
+3. State 的更新將會被 Merge
+4. State 的更新可能是非同步的
+    - this.props 和 this.state 可能是非同步的被更新
+
+
+### 事件處理
+
+[事件](https://zh-hant.reactjs.org/docs/handling-events.html)的名稱在 React 中都是 `camelCase`，而在 HTML DOM 中則是`小寫`，事件的值在 JSX 中是一個 function，而在 HTML DOM 中則是一個 string。
+1. React 方法不能使用return false; 來避免預設行為，必須採用e.preventDefault()
+2. this 在 JSX callback 中的意義
+    - JavaScript 中，class 的方法在預設上是沒有被綁定的
+    - 採用public class field 來正確的綁定 callback
+    - 建議避免() => this.handleClick() arrow 寫法，後續當作參數傳遞會發生多餘的render，單純的按鈕元件
+
+
+
+### 條件 Render
+
+React 中的[條件](https://zh-hant.reactjs.org/docs/conditional-rendering.html
+) rendering 跟 JavaScript 一致。使用 JavaScript 中的運算子如 if 或者 三元運算子 來建立表示目前 state 的 element，然後讓 React 根據它們來更新 UI。
+
+1. Inline If 與 && 邏輯運算子
+2. Inline If-Else 與三元運算子
+3. 防止 Component Render
+    - 隱藏元件，不希望顯示
+
+
+### 列表與 Key
+1. [Key](https://zh-hant.reactjs.org/docs/lists-and-keys.html) 幫助 React 分辨哪些項目被改變、增加或刪除。在 array 裡面的每個 element 都應該要有一個 key，如此才能給予每個 element 一個固定的身份。
+    - 列表元件沒有key，會收到一個關於你應該提供 key 給每一個列表項目的警告
+    ![case5-warn.jpg](/images/case5-warn.jpg)
+    - `不要用[流水號](https://robinpokorny.com/blog/index-as-a-key-is-an-anti-pattern/)當作key 來使用`
+    - Key 必須在 Sibling(同層) 中是唯一的
+2. 在 JSX 中嵌入 map()，參考NumberList2
+
+
+### React Function Component 比較
+![compare-func.jpg](/images/compare-func.jpg)
+
+### React 元件生命週期
+![life-cycle.jpg](/images/life-cycle.jpg)
+[完整生命週期](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
+1. mounting階段
+    - constructor ：初始化
+    - static getDerivedStateFromProps
+    - componentWillMount(即將廢棄)
+    - render ：渲染
+    - componentDidMount： DOM掛載完成
+
+2. updating階段
+    - componentWillReceiveProps ：props改變時才觸發(即將廢棄)
+    - static getDerivedStateFromProps :當props、state改變就會觸發
+    - shouldComponentUpdate
+    - componentWillUpdate(即將廢棄)
+    - render
+    - getSnapshotBeforeUpdate ：component更新前執行
+    - componentDidUpdate ：component已經更新完畢
+
+3. Unmount 銷毀
+    - componentWillUnmount : component即將銷毀
+
+
+## 參考
+1. [https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/')
+2. [https://ithelp.ithome.com.tw/articles/10234998](https://ithelp.ithome.com.tw/articles/10234998')
+3. [https://zh-hant.reactjs.org/docs/lists-and-keys.html](https://zh-hant.reactjs.org/docs/lists-and-keys.html')
+4. [https://robinpokorny.com/blog/index-as-a-key-is-an-anti-pattern/](https://robinpokorny.com/blog/index-as-a-key-is-an-anti-pattern/')

@@ -1,0 +1,122 @@
+---
+title: React 環境介紹及建置
+description: 主要學習React基礎項目，從環境建置、開立專案到到運行。當中包含推薦使用的開發環境、工具及專案基礎設定。
+slug: react1
+date: 2023-01-19
+type: Post
+redirectFrom:
+  - /old-all-feature-demo/
+---
+
+## 專案環境建置及介紹
+### React是什麼?
+![react-logo.jpg](/images/react-logo.jpg)
+
+React（也稱為React.js或ReactJS），是由facebook所開發的一個陳述式、高效且具有彈性的 `JavaScript 函式庫`，用以建立使用者介面。
+React 讓你使用小巧而獨立的component，來建立複雜的 UI，且可讓開發者重複利用元件，在維護體驗上可以更好體驗，實質來說它`並非一個框架`。
+
+React有以下幾個特色：
+1. 使用JS在前端產生HTML，完全由JS操作UI，使他可以跟後端分離，達到即使互動效果
+2. 採用Virtual DOM概念，提升元件`重新渲染`的效率
+3. 每個component 都可以控制自己的`state(狀態)`，也能透過`props`傳遞資料給子元件
+
+### React環境安裝
+1. 一個較新的版本的[Node.js](https://nodejs.org/en/)建議14.0.0版以上
+
+2. 開發環境工具採用[VsCode](https://code.visualstudio.com/)進行開發。也可採用官方推薦的工具[Next.js]('https://nextjs.org/)，它是一個輕量的開源 Web 開發框架，採用 Node.js 作為伺服器環境，支援React的Web應用程式功能，例如靜態網站生成和伺服器端渲染
+
+3. VsCode 相關延伸套件，React Snippets 和指令的基本集合，快速方便進行語法套用
+     - [Simple React Snippets](https://marketplace.visualstudio.com/items?itemName=burkeholland.simple-react-snippets)
+
+4. 採用Scss做為開發的話需安裝套件，讓你在使用指令建置檔案時產生對應sass檔案
+  ```bash
+  npm i node-sass
+  ```
+
+
+### React Developer Tools
+[React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=zh-TW)用於開發階段可查看對應組件間的結構關係及元件傳遞的值。
+首次安裝可能會有無法使用的情形，透過安裝擴充的功能進行設定，並把`允許存取檔案網址`啟用，才能進行網頁的分析。
+![chrome-tool.jpg](/images/chrome-tool.jpg)
+
+使用情境下主要有以下三個狀態：
+   - 正式發布
+   - 開發中
+   - 無法啟用
+
+以下為開發工具人員F12可查看對應畫面
+![console.jpg](/images/console.jpg)
+
+
+
+### React編譯相關指令
+React 相關編輯指令、建置專案及快速建立元件指令如下：
+```bash
+// 創建專案
+npx create-react-app my-app
+// 創建元件
+npx generate-react-cli component MyComponent
+// 需先下載
+npm install generate-react-cli (可選)
+// 啟動專案
+npm run start
+// 打包專案
+npm build
+```
+**特別注意**，第一次使用創建元件會出現初始元件創建選項填答，依照專案需求選擇Yes/No進行預設。創建成功後，專案內會多了一個`generate-react-cli.json檔案`，按照自己選擇的條件所建立的，後續需要調整可在此進行修改。
+```json:jsconfig.json
+{
+  "usesTypeScript": false,  // 是否使用typeScript
+  "usesCssModule": false,   // 是否使用CssModucle
+  "cssPreprocessor": "scss", // css 預設處理器
+  "testLibrary": "None",    // 測試檔案
+  "component": {
+    "default": {  // 預設創建元件的設定
+      "path": "src/components",  // 創建元件預設路徑
+      "withStyle": true,    // 建立style檔案
+      "withTest": false,    // 建立測試檔案
+      "withStory": false,   // 建立store檔案
+      "withLazy": false     // 建立lazy檔案
+    }
+  }
+}
+```
+除了預設(default)元件創建設定，也可以再新增其它預設路徑並透過type來進行切換，相關指令可參考[generate-react-cli](https://www.npmjs.com/package/generate-react-cli)。
+```bash
+npx generate-react-cli component HomePage --type=page
+```
+如果在執行npm run start 出現了port已被佔據，又不想每次都做確認時，可在package.json檔案的scripts區塊自訂指令，自動將設置的port轉換為預設啟用。
+```json:package.json
+  "scripts": {
+    "start": "react-scripts start", // 原始預設3000
+    "start-pc": "set PORT=3001&& react-scripts start" // 設置3001
+  },
+```
+
+
+
+## 專案基礎結構
+
+![project-structure.jpg](/images/project-structure.jpg)
+
+1. node_modules：下載套件/函式庫(package/library)在 local 的存放位置
+2. public：公開的檔案資料夾，可以放入不會被編譯的檔案，起始index.html也放置於其中
+3. src：主要開發環境的檔案，放置 js、css、圖片等等
+4. package.json：運行環境所使用的安裝套件管理
+5. package-lock.json：鎖定所有套件具體來源和版本號，包括主模組和所有套件子模組
+6. **jsconfig.json**：`自定義jsconfig`，用來設定js檔案相關設定檔。舉例來說，我們想要可以auto import檔案路徑
+
+```json:generate-react-cli.json
+{
+    "compilerOptions": {
+        "baseUrl": "./src",
+        "checkJs": true,
+        "jsx": "react"
+    }
+}
+```
+
+## 參考
+1. [https://stackoverflow.com/questions/67352418/how-to-add-scss-styles-to-a-react-project](https://stackoverflow.com/questions/67352418/how-to-add-scss-styles-to-a-react-project)
+2. [https://ithelp.ithome.com.tw/articles/10293697?sc=rss.iron](https://ithelp.ithome.com.tw/articles/10293697?sc=rss.iron')
+3. [https://stackoverflow.com/questions/60637561/auto-import-of-react-components-in-visual-studio-code](https://stackoverflow.com/questions/60637561/auto-import-of-react-components-in-visual-studio-code)
