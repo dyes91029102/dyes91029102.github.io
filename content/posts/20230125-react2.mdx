@@ -1,5 +1,5 @@
 ---
-title: React JSX及Component簡介
+title: React JSX及Component簡介#02
 description: 在開始學習React之前，要先了解JSX是什麼，他是組建component需要使用到的語法。
 slug: react2
 date: 2023-01-25
@@ -13,19 +13,37 @@ redirectFrom:
 ### JSX是什麼?
 
 1. 大部分 React 的開發者會使用一種特殊的語法，被稱為`JSX`，因為它讓這些結構寫起來更容易。
-
+```js
+const element = <h1>Hello, Brook！</h1>;
+```
 2. [JSX](https://ithelp.ithome.com.tw/articles/10277126) 就跟 JavaScript 一樣強大。可以在 JSX 中的括號中放入任何JavaScript的表達式。每個React element都是一個 JavaScript 的 object，你可以把它存在一個變數中或在程式中互相傳遞。
+```js
+const name = 'Brook';
+const element = <h1>Hello, {name}</h1>;
+```
 
 3. JSX的X代表的是`XML`語法的意思，它讀到JSX語法時，語法實際上是用`React.createElement`方法來建立虛擬的DOM元素
 
-4. JSX當中看到像HTML語法的內容，並不是真正網路上的Tag，而是封裝過的語法供開發者方便開發。但部分語法因與JavaScript語法衝突，
+4. JSX當中看到像HTML語法的內容，並不是真正HTML上的Tag，而是封裝過的語法供開發者方便開發。但部分語法因與JavaScript語法衝突，
 例如:HTML中的屬性`class`與`for`，在JSX語法要改用`className`與`htmlFor`來取代
+
+### 為什麼要用JSX?
+React 採用[關注點分離（Separation of concerns, SoC）](https://nissentech.org/frontend-soc-evolution/),
+將其拆分為包含UI及JS邏輯的元件，讓彼此之間相互依賴降低。
+如果有寫過Angular的開發者應該知道，其一個component被拆分為css、html、ts等檔案，雖然各自功能很獨立，需同時維護多個檔案，實質上也是在畫面上呈現的一個組件而已。
+與其將撰寫技術分開，透過使用JSX將JS及畫面撰寫再一起，或許是一個更好的幫助。
+
+Angular component組成
+![angular-component.jpg](/images/angular-component.jpg)
+
+React component 組成
+![react-component.jpg](/images/react-component.jpg)
 
 ### JSX語法與React Element(元素)
 React Element(元素)是一個React用於描述虛擬DOM元素的物件，它只有單純用於描述的屬性值，其中沒有帶有方法。
 ![sample2.jpg](/images/sample2.jpg)
 
-
+基礎元素主要有以下5個基礎屬性：
 1. type： 一個字串，代表任何合法的HTML元素類型名稱，例如h1、div，或是參照到React程式碼中定義的的元件類別
 2. props：對應到元素的屬性值的屬性
 3. key： React用來識別元素的屬性，尤其是在同樣類型的元素間要用這個屬性來區分
@@ -120,3 +138,5 @@ const Foo: FunctionalComponent = () => {
 1. [https://ithelp.ithome.com.tw/articles/10186053](https://ithelp.ithome.com.tw/articles/10186053)
 2. [https://stackoverflow.com/questions/64343698/what-is-the-difference-between-js-tsx-and-jsx-in-react](https://stackoverflow.com/questions/64343698/what-is-the-difference-between-js-tsx-and-jsx-in-react)
 3. [https://ithelp.ithome.com.tw/articles/10292075](https://ithelp.ithome.com.tw/articles/10292075)
+4. [https://nissentech.org/frontend-soc-evolution/](https://nissentech.org/frontend-soc-evolution/)
+5. [https://zh-hant.reactjs.org/docs/introducing-jsx.html](https://zh-hant.reactjs.org/docs/introducing-jsx.html)
