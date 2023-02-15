@@ -46,6 +46,7 @@ specifiers:
   next-themes: ^0.2.0
   nprogress: ^0.2.0
   plaiceholder: ^2.5.0
+  pnpm: ^7.11.0
   postcss: ^8.4.16
   prettier: ^2.7.1
   prettier-plugin-tailwindcss: ^0.1.13
@@ -77,6 +78,7 @@ dependencies:
   next-themes: 0.2.0_3xcjr4wz26biff45sz3jtokgje
   nprogress: 0.2.0
   plaiceholder: 2.5.0_sharp@0.31.0
+  pnpm: 7.27.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   rehype-code-titles: 1.1.0
@@ -114,7 +116,7 @@ devDependencies:
   eslint-plugin-react-hooks: 4.6.0_eslint@8.23.0
   eslint-plugin-simple-import-sort: 7.0.0_eslint@8.23.0
   eslint-plugin-tailwindcss: 3.6.1
-  next-sitemap: 3.1.21_xkb6zu2xydbkkcolmlbdtcl34q
+  next-sitemap: 3.1.21_next@12.2.5
   postcss: 8.4.16
   prettier: 2.7.1
   prettier-plugin-tailwindcss: 0.1.13_prettier@2.7.1
@@ -1393,7 +1395,7 @@ packages:
     dependencies:
       '@contentlayer/core': 0.2.7_esbuild@0.15.6
       '@contentlayer/utils': 0.2.7
-      clipanion: 3.2.0-rc.11_typanion@3.9.0
+      clipanion: 3.2.0-rc.11
       typanion: 3.9.0
     transitivePeerDependencies:
       - '@effect-ts/otel-node'
@@ -1763,10 +1765,6 @@ packages:
 
   /@next/env/12.2.5:
     resolution: {integrity: sha512-vLPLV3cpPGjUPT3PjgRj7e3nio9t6USkuew3JE/jMeon/9Mvp1WyR18v3iwnCuX7eUAm1HmAbJHHLAbcu/EJcw==}
-
-  /@next/env/13.1.5:
-    resolution: {integrity: sha512-0Ry4NhJy6qLbXhvxPRUQ1H6RzgtryGdUto7hfgAK0Iw/bScgeVjwLZdfhm2iT7qsOS32apo9cWzLCxjc6iGPsA==}
-    dev: true
 
   /@next/eslint-plugin-next/12.2.5:
     resolution: {integrity: sha512-VBjVbmqEzGiOTBq4+wpeVXt/KgknnGB6ahvC/AxiIGnN93/RCSyXhFRI4uSfftM2Ba3w7ZO7076bfKasZsA0fw==}
@@ -2864,10 +2862,8 @@ packages:
     resolution: {integrity: sha512-jJ0bqzaylmJtVnNgzTeSOs8DPavpbYgEr/b0YL8/2GO3xJEhInFmhKMUnEJQjZumK7KXGFhUy89PrsJWlakBVg==}
     dev: false
 
-  /clipanion/3.2.0-rc.11_typanion@3.9.0:
+  /clipanion/3.2.0-rc.11:
     resolution: {integrity: sha512-fugY+N5uPop31VDYhjTc31DwPjCCLx6kmvdlFTf8fztpOxwplopiZr1XSHSA2qNmfpcXlJZKJsXMkxvXmdzK7g==}
-    peerDependencies:
-      typanion: '*'
     dependencies:
       typanion: 3.9.0
     dev: false
@@ -5422,7 +5418,7 @@ packages:
       react-dom: 18.2.0_react@18.2.0
     dev: false
 
-  /next-sitemap/3.1.21_xkb6zu2xydbkkcolmlbdtcl34q:
+  /next-sitemap/3.1.21_next@12.2.5:
     resolution: {integrity: sha512-8upGCtI91FvjNBpeKDZzrzRBlY4BH6qjG7dMe89sdBzJ9B++PVLTzRPlpLHJYOEPukBROsxi2zVuAvePBtsrdw==}
     engines: {node: '>=14.18'}
     hasBin: true
@@ -5431,7 +5427,6 @@ packages:
       next: '*'
     dependencies:
       '@corex/deepmerge': 4.0.29
-      '@next/env': 13.1.5
       minimist: 1.2.6
       next: 12.2.5_vacqwbuyxbzotnxzwfnqkw74su
     dev: true
@@ -5764,6 +5759,12 @@ packages:
       node-cache: 5.1.2
       node-fetch: 2.6.7_encoding@0.1.13
       sharp: 0.31.0
+    dev: false
+
+  /pnpm/7.27.0:
+    resolution: {integrity: sha512-nvxGrxgu3oYyw7zg7DdotEnqp9r/c0/iLZHr6QewJPEkVFGSPdsxrm0HFKBkOqwCInoutFzz/mtGx+pbYV8UCw==}
+    engines: {node: '>=14.6'}
+    hasBin: true
     dev: false
 
   /postcss-import/14.1.0_postcss@8.4.16:
