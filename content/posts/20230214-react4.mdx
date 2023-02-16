@@ -1,0 +1,102 @@
+---
+title: React Component 比較和生命週期#04
+description: 了解React的基礎語法之後，可以發現我們在範例中，部分寫法採用function方式，部分內容採用class寫法，它們實際上都是JSX的語法，以下就讓我們來了解一下當中的差異。
+slug: react4
+date: 2023-02-14
+type: Post
+redirectFrom:
+  - /old-all-feature-demo/
+---
+
+
+## Component 比較
+
+functional 元件寫法縮減，在開發上有更好的體驗，同時增加程式的可讀性。
+class 元件在處理複雜的邏輯時，有良好的生命週期處理不同階段的事情，state可以隨時記錄當下狀態，
+但這部分functional元件 在[react hook](https://zh-hant.reactjs.org/docs/hooks-intro.html)出現後，基本上彌補了這些缺失。以下是個別的差異介紹：
+
+### functional Component
+- 方法中沒有this關鍵字
+- 早期被稱為`無狀態組件(stateless)`，直到react hook useSet出現解決了
+- 早期沒有生命週期，直到react hook useEffect出現解決了
+- props 傳進function後，會一直是原本傳進來的物件，閉包的概念
+- 編譯快，不用將class轉換為es5，檔案小
+
+```js: functional component
+// function 寫法
+function FunctionalComponent(props) {
+    const sayHi =()=>{
+        console.log('hi')
+    }
+    return (<button onClick={sayHi}>click me</button>);
+}
+// arrow function 寫法
+const FunctionalComponent = ({ props }) => (<button>props</button>)
+```
+
+### class Component 
+- 元件中有this
+- 具有`state(Stateful component)`
+- 有豐富的生命周期，可處理複雜元件
+- 每次都拿到最新的props，因為this隨時都在更動
+- 需實作render方法
+```js: class component
+class ClassComponent extends React.Component {
+    constructor(props){
+      super(props);
+    }
+    sayHi(){
+        console.log('hi')
+    }
+    render(){
+      return (
+        <button onClick={this.sayHi}>click me</button>
+      );
+    }
+}
+```
+![compare-func.jpg](/images/compare-func.jpg)
+
+## Component 生命週期
+![life-cycle.jpg](/images/life-cycle.jpg)
+以上是官方提供的元件基礎生命週期，大致來說分為三個階段：
+- 創建component (componentDidMount)
+- 更新component(componentDidUpdate)
+- 銷毀component (componentWillUnmount)
+
+```js
+export class CycleCase extends React.Component {
+  componentWillMount() {
+    alert('創建component');
+  }
+
+  componentDidMount() {
+    alert('更新component');
+  }
+  
+  componentWillUnmount() {
+    alert('銷毀component');
+  }
+
+  render() {
+    return <h1>hello world</h1>;
+  }
+}
+```
+以下是幾個比較常用到的方法：
+- constructor :用來初始化的地方，還沒掛載到DOM的時候，假設沒有寫super() ，就調用this的話會報錯
+- render：必須實作的，回傳JSX
+- componentDidMount: DOM已經掛載完成 ，在這個階段可以呼叫api來更新DOM ，適合做一些初始化的工作
+- componentDidUpdate: 當props or state更新 ，就會觸發組件更新DOM，所以千萬不要在這個階段`setState`，會造成無限循環
+- componentWillUnmount: component從DOM被移除 ，此時針對監聽的事件或是計時器進行清除
+- getDerivedStateFromProps()： 當props、state改變就會觸發，在初始化的時候也會觸發一次
+- shouldComponentUpdate：讓你判斷是否要進行更新，如果回傳false這邊就不繼續往下執行render， 所以這邊可以做一些效能的優化
+
+目前class component才有這些生命週期，functional component 則需透過react hook 的機制才能達到生命週期的效果。
+底下是官方提供的完整元件的[完整生命週期](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
+
+## 參考
+1. [https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
+2. [https://ithelp.ithome.com.tw/articles/10234998](https://ithelp.ithome.com.tw/articles/10234998')
+3. [https://pjchender.dev/react/react-life-cycle/#mounting-lifecycle](https://pjchender.dev/react/react-life-cycle/#mounting-lifecycle)
+4. [https://ithelp.ithome.com.tw/articles/10234746](https://ithelp.ithome.com.tw/articles/10234746)

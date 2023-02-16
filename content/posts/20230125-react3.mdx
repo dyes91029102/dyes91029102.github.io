@@ -34,12 +34,48 @@ root.render(<Welcome name="brook" />);
 4. React DOM 將實際更動的DOM更新為 `<div>Hello, Sara</div>`。
 
 ### Components 與 State
-State 類似於 prop，但它是私有(Locale)且由 component 完全控制的，在component 才有此屬性。
+State 類似於 prop，但它是私有(Locale)且由 component 完全控制的，在class 的 component 才能使用該屬性。
 
-唯一可初始指定在contructor ，`不能直接修改State`，而是採用setState()，否則不會render畫面。
-
-練習程式碼如下:
 ```js
+class Child extends React.Component {
+  constructor(props) {
+    super(props);
+    // 設定了兩個私有參數
+    this.state = {
+      first: 1,
+      two: 2
+    };
+  }
+}
+```
+
+state 雖然是私有屬性，但可以繼續往子層傳遞，子層只會知道接收到什麼值，並不會知道它是state 還是 props。
+```js
+// 小孩
+const Child = (props)=>{
+  return(
+    <p>{props.name}</p>
+  );
+}
+// 父親
+class Father extends React.Component {
+  constructor(props) {
+    super(props);
+    // 設定了兩個私有參數
+    this.state = {
+      name: 'brook'
+    };
+  }
+
+  render(){
+    return(
+      <Child name={this.state.name}/>
+    );
+  }
+}
+```
+唯一可初始指定在contructor ，`不能直接修改State`，而是採用setState()，否則不會render畫面。
+```js:練習程式碼
 import React from 'react';
 import './Practice.scss';
 // 子層
@@ -150,7 +186,7 @@ export default App;
 
 ### 事件處理
 
-[事件](https://zh-hant.reactjs.org/docs/handling-events.html)的名稱在 React 中都是 `camelCase`，而在 HTML DOM 中則是`小寫`，事件的值在 JSX 中是一個 function，而在 HTML DOM 中則是一個 string。
+[事件](https://zh-hant.reactjs.org/docs/handling-events.html)的名稱在 React 中都是 `小駝峰camelCase`，而在 HTML DOM 中則是`小寫`，事件的值在 JSX 中是一個 function，而在 HTML DOM 中則是一個 string。
 ```js
 // html
 <button onclick="clickMe()">
@@ -163,7 +199,7 @@ export default App;
 </button>
 ```
 
-React 方法不能使用return false; 來避免預設行為，必須採用e.preventDefault()。
+React 事件方法不能使用`return false;` 來避免預設行為，必須採用e.preventDefault()。
 ```js
 function App() {
   function handleMe(e) {
@@ -179,10 +215,10 @@ function App() {
 }
 ```
 
-2. this 在 JSX callback 中的意義
-    - JavaScript 中 class 的方法在預設上是沒有被綁定的
-    - 採用public class field 來正確的綁定 callback
-    - 建議避免() => this.handleClick() arrow 寫法，後續當作參數傳遞會發生多餘的render，單純的按鈕元件
+在class 的component中， this 在 JSX callback 中的意義，主要有以下幾點要注意：
+  - JavaScript 中 class 的方法在預設上是沒有被綁定的
+  - 採用[public class field]('https://pjchender.dev/javascript/js-class/#public-class-fields') 來正確的綁定 callback
+  - 建議避免() => this.handleClick() arrow 寫法，後續當作參數傳遞會發生多餘的render，單純的按鈕元件
 
 
 ```js:完整event demo
@@ -249,56 +285,137 @@ class Case3 extends React.Component {
 export default Case3;
 ```
 
+除了屬性資料欄位可以傳遞，事件也可以透過props來做傳遞，但在傳遞之前，思考一下，該事件應當放於父層還是子層，當在邏輯沒有清楚時，
+過多的傳遞容易造成混淆並且相互依賴程度變高。
+```js
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+
+const BoxItem = (props) => {
+  // 產生小item
+  let renderItem = (i) => {
+    // 接受父層click事件
+    return (
+      <div onClick={()=>props.onFatherClick(i)}>
+        {i}
+      </div>
+    );
+  }
+
+  return (
+    <div >
+      {renderItem(1)}
+      {renderItem(2)}
+    </div>
+  );
+}
+
+const Box = (props) => {
+  let handleChild = (index) => {
+    console.log('child', index);
+  }
+  return (
+    <div>
+      <BoxItem onFatherClick={handleChild} />
+    </div>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<Box />);
+```
+
 
 ### 條件 Render
 
 React 中的[條件](https://zh-hant.reactjs.org/docs/conditional-rendering.html
 ) rendering 跟 JavaScript 一致。使用 JavaScript 中的運算子如 if 或者 三元運算子 來建立表示目前 state 的 element，然後讓 React 根據它們來更新 UI。
 
-1. Inline If 與 && 邏輯運算子
-2. Inline If-Else 與三元運算子
-3. 防止 Component Render
-    - 隱藏元件，不希望顯示
+1. Inline If 與 && 邏輯運算子，特別注意如果&& 前方為false，本身第一個count是表達式所以0還是會顯示
 ```js
+const Case1 = ()=>{  
+    let count = 0;
+    return(    
+      <div>
+        {count && <h1>not display {count}</h1>  }  
+       <h1>{count}</h1>
+      </div>
+    );
+  }
+```
+2. Inline If-Else 與三元運算子
+```js
+const Case1 = ()=>{  
+  let isType = false;
+  return(    
+    <div>
+      this is a {isType?'book':'pen'}.
+    </div>
+  );
+}
+```
+3. 防止 Component Render， 隱藏元件，不希望顯示
+```js
+function Warning(props) {
+  if (!props.warn) {
+    return null;
+  }
+
+   return (
+    <div>
+      Warning!
+    </div>
+  );
+}
 ```
 
 ### 列表與 Key
-1. [Key](https://zh-hant.reactjs.org/docs/lists-and-keys.html) 幫助 React 分辨哪些項目被改變、增加或刪除。在 array 裡面的每個 element 都應該要有一個 key，如此才能給予每個 element 一個固定的身份。
-    - 列表元件沒有key，會收到一個關於你應該提供 key 給每一個列表項目的警告
-    ![case5-warn.jpg](/images/case5-warn.jpg)
-    - `不要用[流水號](https://robinpokorny.com/blog/index-as-a-key-is-an-anti-pattern/)當作key 來使用`
-    - Key 必須在 Sibling(同層) 中是唯一的
-2. 在 JSX 中嵌入 map()，參考NumberList2
+當你想要重複產生一個元件時，可以利用列表方式產生，下面範例一個ul產生多個li，以下是沒有加key時，console會噴出警告的錯誤訊息。
+```js
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+
+const Item = (props) => (
+    <li>
+        {props.value}
+    </li>
+);
+// 沒有key錯誤的寫法
+const Box = () => {
+    let arrays = [1, 2, 3];
+    return (
+        <ul>
+            {arrays.map((num)=>
+                (<Item value={num} />)
+            )}
+        </ul>
+    );
+}
 
 
-### React Function Component 比較
-![compare-func.jpg](/images/compare-func.jpg)
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<Box />);
+```
+![case5-warn.jpg](/images/case5-warn.jpg)
 
-### React 元件生命週期
-![life-cycle.jpg](/images/life-cycle.jpg)
-[完整生命週期](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
-1. mounting階段
-    - constructor ：初始化
-    - static getDerivedStateFromProps
-    - componentWillMount(即將廢棄)
-    - render ：渲染
-    - componentDidMount： DOM掛載完成
+[Key](https://zh-hant.reactjs.org/docs/lists-and-keys.html) 幫助 React 分辨哪些項目被改變、增加或刪除。在 array 裡面的每個 element 都應該要有一個 key，如此才能給予每個 element 一個固定的身份。
+盡可能不要用[流水號](https://robinpokorny.com/blog/index-as-a-key-is-an-anti-pattern/)當作key 來使用，且Key 必須在 Sibling(同層) 中是`唯一的`。
+以下我們將剛剛的arrays加上key
+```js
+const Box = () => {
+    let arrays = [1, 2, 3];
+    return (
+        <ul>
+            {arrays.map((num)=>
+                (<Item key={num.toString()} value={num} />)
+            )}
+        </ul>
+    );
+}
+```
 
-2. updating階段
-    - componentWillReceiveProps ：props改變時才觸發(即將廢棄)
-    - static getDerivedStateFromProps :當props、state改變就會觸發
-    - shouldComponentUpdate
-    - componentWillUpdate(即將廢棄)
-    - render
-    - getSnapshotBeforeUpdate ：component更新前執行
-    - componentDidUpdate ：component已經更新完畢
-
-3. Unmount 銷毀
-    - componentWillUnmount : component即將銷毀
 
 
 ## 參考
-1. [https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/')
-2. [https://ithelp.ithome.com.tw/articles/10234998](https://ithelp.ithome.com.tw/articles/10234998')
-3. [https://zh-hant.reactjs.org/docs/lists-and-keys.html](https://zh-hant.reactjs.org/docs/lists-and-keys.html')
-4. [https://robinpokorny.com/blog/index-as-a-key-is-an-anti-pattern/](https://robinpokorny.com/blog/index-as-a-key-is-an-anti-pattern/')
+1. [https://zh-hant.reactjs.org/docs/lists-and-keys.html](https://zh-hant.reactjs.org/docs/lists-and-keys.html')
+2. [https://robinpokorny.com/blog/index-as-a-key-is-an-anti-pattern/](https://robinpokorny.com/blog/index-as-a-key-is-an-anti-pattern/')
